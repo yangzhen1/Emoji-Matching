@@ -1,24 +1,544 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Emoji_Matching" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8B-Y4-UKD">
+                                <rect key="frame" x="0.0" y="946" width="768" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5rO-lF-hZM"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="g4M-fP-rsL"/>
+                                    <barButtonItem title="New Game" id="yFP-Za-4I6">
+                                        <connections>
+                                            <action selector="pressedNewGame:" destination="BYZ-38-t0r" id="iie-nS-nXm"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5rO-lF-hZM"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="5rO-lF-hZM"/>
+                                    </mask>
+                                </variation>
+                            </toolbar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhe-gO-ziI">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lO8-wQ-OlC"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="X6a-lQ-CSs" userLabel="X's turn">
+                                        <barButtonItem key="leftBarButtonItem" title="New Game" id="4LC-O1-pBI">
+                                            <connections>
+                                                <action selector="pressedNewGame:" destination="BYZ-38-t0r" id="n60-dp-bee"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="lO8-wQ-OlC"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="lO8-wQ-OlC"/>
+                                    </mask>
+                                </variation>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Gt-2V-4ww" userLabel="Usable View">
+                                <rect key="frame" x="0.0" y="50" width="768" height="974"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5b-NC-6vZ" userLabel="Game Board">
+                                        <rect key="frame" x="104" y="137" width="560" height="700"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="PC8-My-tJL">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="700"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="RB4-j6-8Sk">
+                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="122.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdM-ak-t6c">
+                                                                <rect key="frame" x="0.0" y="0.0" width="129" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lr2-GA-5PG"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ob-tc-CA1">
+                                                                <rect key="frame" x="144" y="0.0" width="128.5" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xXS-il-eQJ"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMB-J2-tal">
+                                                                <rect key="frame" x="287.5" y="0.0" width="129" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yiv-TP-r9t"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUJ-J3-9Ll">
+                                                                <rect key="frame" x="431.5" y="0.0" width="128.5" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fmj-Ic-gcc"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="P7k-ze-A6K">
+                                                        <rect key="frame" x="0.0" y="144.5" width="560" height="122.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grg-Q3-lp2">
+                                                                <rect key="frame" x="0.0" y="0.0" width="129" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dGh-Wb-Tzu"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJ5-Og-rIq">
+                                                                <rect key="frame" x="144" y="0.0" width="128.5" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kjm-hR-D2s"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfC-8E-2Co">
+                                                                <rect key="frame" x="287.5" y="0.0" width="129" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uT7-Mq-jVH"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvT-y4-euR">
+                                                                <rect key="frame" x="431.5" y="0.0" width="128.5" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z1N-OG-NXx"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="LCG-Gf-ebs">
+                                                        <rect key="frame" x="0.0" y="289" width="560" height="122"/>
+                                                        <subviews>
+                                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="038-HN-eec">
+                                                                <rect key="frame" x="0.0" y="0.0" width="129" height="122"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e3T-Wm-kMR"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uxu-SN-deY">
+                                                                <rect key="frame" x="144" y="0.0" width="128.5" height="122"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RMA-Ad-J8z"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cx-cn-lzJ">
+                                                                <rect key="frame" x="287.5" y="0.0" width="129" height="122"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uun-y6-z2L"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHG-rE-PZM">
+                                                                <rect key="frame" x="431.5" y="0.0" width="128.5" height="122"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TMc-mq-n73"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="wng-J7-F87">
+                                                        <rect key="frame" x="0.0" y="433" width="560" height="122.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PG-Dg-EWY">
+                                                                <rect key="frame" x="0.0" y="0.0" width="129" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtT-ci-TrV"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sze-e2-LTI">
+                                                                <rect key="frame" x="144" y="0.0" width="128.5" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Po6-sB-ovp"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQK-G5-kQm">
+                                                                <rect key="frame" x="287.5" y="0.0" width="129" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BqE-Lj-Kh0"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjY-R6-9MW">
+                                                                <rect key="frame" x="431.5" y="0.0" width="128.5" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Mx-gh-y6d"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8hg-UR-Pg6">
+                                                        <rect key="frame" x="0.0" y="577.5" width="560" height="122.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nb-vo-bQ6">
+                                                                <rect key="frame" x="0.0" y="0.0" width="129" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cXU-J9-xsi"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31y-RR-Ouk">
+                                                                <rect key="frame" x="144" y="0.0" width="128.5" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3qa-vh-t3c"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avs-VY-fgH">
+                                                                <rect key="frame" x="287.5" y="0.0" width="129" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cza-KG-4yJ"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="19" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NY-xR-GNh">
+                                                                <rect key="frame" x="431.5" y="0.0" width="128.5" height="122.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                <state key="normal" title="O"/>
+                                                                <variation key="widthClass=compact">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                                                </variation>
+                                                                <variation key="widthClass=regular">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                                </variation>
+                                                                <connections>
+                                                                    <action selector="pressedGameBoardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KLW-bp-BWa"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="PC8-My-tJL" secondAttribute="bottom" id="AaY-uH-3dO"/>
+                                            <constraint firstAttribute="width" secondItem="W5b-NC-6vZ" secondAttribute="height" multiplier="4:5" id="Cvf-9M-AFu"/>
+                                            <constraint firstItem="PC8-My-tJL" firstAttribute="leading" secondItem="W5b-NC-6vZ" secondAttribute="leading" id="DUX-IR-bFK"/>
+                                            <constraint firstAttribute="height" constant="700" id="ftb-xG-Qbr"/>
+                                            <constraint firstItem="PC8-My-tJL" firstAttribute="top" secondItem="W5b-NC-6vZ" secondAttribute="top" id="jSe-e0-r90"/>
+                                            <constraint firstAttribute="width" constant="560" id="wfc-Yn-hFD"/>
+                                            <constraint firstAttribute="trailing" secondItem="PC8-My-tJL" secondAttribute="trailing" id="yyI-ef-SmC"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Cvf-9M-AFu"/>
+                                                <exclude reference="ftb-xG-Qbr"/>
+                                                <exclude reference="wfc-Yn-hFD"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="Cvf-9M-AFu"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="ftb-xG-Qbr"/>
+                                                <include reference="wfc-Yn-hFD"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.47058823529411764" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="W5b-NC-6vZ" firstAttribute="leading" secondItem="7Gt-2V-4ww" secondAttribute="leading" constant="20" id="Lxe-ZX-3eq"/>
+                                    <constraint firstItem="W5b-NC-6vZ" firstAttribute="centerY" secondItem="7Gt-2V-4ww" secondAttribute="centerY" id="MgL-ky-iwe"/>
+                                    <constraint firstItem="W5b-NC-6vZ" firstAttribute="centerX" secondItem="7Gt-2V-4ww" secondAttribute="centerX" id="RpC-QI-ZEd"/>
+                                    <constraint firstAttribute="trailing" secondItem="W5b-NC-6vZ" secondAttribute="trailing" constant="20" id="b12-Ib-j5K"/>
+                                    <constraint firstItem="W5b-NC-6vZ" firstAttribute="centerX" secondItem="7Gt-2V-4ww" secondAttribute="centerX" id="cu3-1O-qGm"/>
+                                    <constraint firstItem="W5b-NC-6vZ" firstAttribute="centerY" secondItem="7Gt-2V-4ww" secondAttribute="centerY" id="jZy-JR-5cE"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Lxe-ZX-3eq"/>
+                                        <exclude reference="MgL-ky-iwe"/>
+                                        <exclude reference="RpC-QI-ZEd"/>
+                                        <exclude reference="b12-Ib-j5K"/>
+                                        <exclude reference="cu3-1O-qGm"/>
+                                        <exclude reference="jZy-JR-5cE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Lxe-ZX-3eq"/>
+                                        <exclude reference="RpC-QI-ZEd"/>
+                                        <include reference="b12-Ib-j5K"/>
+                                        <include reference="jZy-JR-5cE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="MgL-ky-iwe"/>
+                                        <include reference="cu3-1O-qGm"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7Gt-2V-4ww" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4MQ-LZ-dZc"/>
+                            <constraint firstItem="7Gt-2V-4ww" firstAttribute="top" secondItem="lhe-gO-ziI" secondAttribute="bottom" id="B30-oG-cZn"/>
+                            <constraint firstItem="F8B-Y4-UKD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ego-rb-Q7E"/>
+                            <constraint firstItem="F8B-Y4-UKD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="IBT-8n-RMq"/>
+                            <constraint firstItem="7Gt-2V-4ww" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ifp-h7-fto"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Gt-2V-4ww" secondAttribute="trailing" id="JI4-Er-chM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7Gt-2V-4ww" secondAttribute="bottom" id="Zvo-fu-81x"/>
+                            <constraint firstItem="F8B-Y4-UKD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="grX-tG-m9n"/>
+                            <constraint firstItem="lhe-gO-ziI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="mxF-p2-Igi">
+                                <variation key="widthClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="F8B-Y4-UKD" firstAttribute="top" secondItem="7Gt-2V-4ww" secondAttribute="bottom" id="qiy-YA-ydL"/>
+                            <constraint firstItem="lhe-gO-ziI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rdY-l9-TiA"/>
+                            <constraint firstItem="lhe-gO-ziI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xX4-7J-Gg1"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="F8B-Y4-UKD"/>
+                                <exclude reference="lhe-gO-ziI"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="mxF-p2-Igi"/>
+                                <exclude reference="rdY-l9-TiA"/>
+                                <exclude reference="xX4-7J-Gg1"/>
+                                <exclude reference="Zvo-fu-81x"/>
+                                <exclude reference="B30-oG-cZn"/>
+                                <exclude reference="Ifp-h7-fto"/>
+                                <exclude reference="Ego-rb-Q7E"/>
+                                <exclude reference="IBT-8n-RMq"/>
+                                <exclude reference="grX-tG-m9n"/>
+                                <exclude reference="qiy-YA-ydL"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="F8B-Y4-UKD"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Ifp-h7-fto"/>
+                                <include reference="Ego-rb-Q7E"/>
+                                <include reference="IBT-8n-RMq"/>
+                                <include reference="grX-tG-m9n"/>
+                                <include reference="qiy-YA-ydL"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="lhe-gO-ziI"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="mxF-p2-Igi"/>
+                                <include reference="rdY-l9-TiA"/>
+                                <include reference="xX4-7J-Gg1"/>
+                                <include reference="Zvo-fu-81x"/>
+                                <include reference="B30-oG-cZn"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outletCollection property="gameBoardButtons" destination="fdM-ak-t6c" collectionClass="NSMutableArray" id="1e3-0D-tBM"/>
+                        <outletCollection property="gameBoardButtons" destination="6ob-tc-CA1" collectionClass="NSMutableArray" id="nSR-6q-9jp"/>
+                        <outletCollection property="gameBoardButtons" destination="UMB-J2-tal" collectionClass="NSMutableArray" id="Nqn-5k-ITv"/>
+                        <outletCollection property="gameBoardButtons" destination="PUJ-J3-9Ll" collectionClass="NSMutableArray" id="67n-dx-gwN"/>
+                        <outletCollection property="gameBoardButtons" destination="grg-Q3-lp2" collectionClass="NSMutableArray" id="t4g-OO-NHP"/>
+                        <outletCollection property="gameBoardButtons" destination="tJ5-Og-rIq" collectionClass="NSMutableArray" id="057-dr-srz"/>
+                        <outletCollection property="gameBoardButtons" destination="EfC-8E-2Co" collectionClass="NSMutableArray" id="P0E-zu-lIc"/>
+                        <outletCollection property="gameBoardButtons" destination="dvT-y4-euR" collectionClass="NSMutableArray" id="uU3-zD-4je"/>
+                        <outletCollection property="gameBoardButtons" destination="038-HN-eec" collectionClass="NSMutableArray" id="1T2-Y4-4Az"/>
+                        <outletCollection property="gameBoardButtons" destination="Uxu-SN-deY" collectionClass="NSMutableArray" id="dMu-kY-Fpf"/>
+                        <outletCollection property="gameBoardButtons" destination="1Cx-cn-lzJ" collectionClass="NSMutableArray" id="x5s-lA-b5f"/>
+                        <outletCollection property="gameBoardButtons" destination="UHG-rE-PZM" collectionClass="NSMutableArray" id="xbH-of-et4"/>
+                        <outletCollection property="gameBoardButtons" destination="9PG-Dg-EWY" collectionClass="NSMutableArray" id="0Go-0h-sUR"/>
+                        <outletCollection property="gameBoardButtons" destination="Sze-e2-LTI" collectionClass="NSMutableArray" id="0xU-AU-SPH"/>
+                        <outletCollection property="gameBoardButtons" destination="vQK-G5-kQm" collectionClass="NSMutableArray" id="QrR-AU-V6g"/>
+                        <outletCollection property="gameBoardButtons" destination="vjY-R6-9MW" collectionClass="NSMutableArray" id="Q8x-XC-GIS"/>
+                        <outletCollection property="gameBoardButtons" destination="2nb-vo-bQ6" collectionClass="NSMutableArray" id="9qa-dR-6DP"/>
+                        <outletCollection property="gameBoardButtons" destination="31y-RR-Ouk" collectionClass="NSMutableArray" id="Xde-Lh-i3L"/>
+                        <outletCollection property="gameBoardButtons" destination="Avs-VY-fgH" collectionClass="NSMutableArray" id="oqS-5x-zEP"/>
+                        <outletCollection property="gameBoardButtons" destination="8NY-xR-GNh" collectionClass="NSMutableArray" id="ijP-rx-kZO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="18.75" y="93.75"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
